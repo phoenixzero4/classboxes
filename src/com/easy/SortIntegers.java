@@ -2,7 +2,6 @@ package com.easy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class SortIntegers
 {
@@ -16,11 +15,12 @@ public class SortIntegers
 
 
 
-	public static int[] sortByBits(int[] arr) {
-		List list = new ArrayList<Integer>();
-		List outerList = new ArrayList<List<Integer>>();
+	public static void sortByBits(int[] arr) {
+		ArrayList list = new ArrayList<Integer>();
+		HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
 
-		int max = 0, ones;
+
+		int max = 0, ones = 0;
 
 		for(int i = 0; i < arr.length; i++) {
 
@@ -28,16 +28,38 @@ public class SortIntegers
 			System.out.println( binaryString + " " + arr[i]);
 			ones  = Integer.bitCount( arr[i] );
 
+			if(ones >= max) {
+				max = ones;
+			}
 
-
-
-			public static void main( String[] args )
-				{
-
-					int[] array = { 0,1,2,3,4,5,6,7,8};
-					sortByBits(array);
-
-
-				}
 
 		}
+		for(int i = 0; i <= max; i++) {
+			map.put( i,  new ArrayList<Integer>() );
+		}
+
+		for(int i = 0; i <= max; i++) {
+			int count = Integer.bitCount( arr[i] );
+			ArrayList<Integer> l = map.get( count );
+
+
+
+			l.add( arr[i] );	
+			for(Integer e: l) {
+				System.out.println( "List at " + count + " contains " + e );
+			}
+			map.put( count, l);
+		}
+		System.out.println( map );		
+
+	}
+	public static void main( String[] args )
+		{
+
+			int[] array = { 0,1,2,3,4,5,6,7,8};
+			sortByBits(array);
+
+
+		}
+
+}
