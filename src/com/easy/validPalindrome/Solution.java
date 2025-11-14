@@ -12,8 +12,6 @@ public class Solution
 
 			s = s.replaceAll( "[^a-zA-Z0-9]", "" ).toLowerCase();
 
-			System.err.println( s );
-
 			for ( int i = 0, j = s.length() - 1; i < s.length() / 2; i++, j-- )
 				{
 					if ( s.charAt( i ) != s.charAt( j ) )
@@ -22,6 +20,7 @@ public class Solution
 			return true;
 		}
 
+	// two pointer solution
 	public static boolean isPalindrome2( String s )
 		{
 
